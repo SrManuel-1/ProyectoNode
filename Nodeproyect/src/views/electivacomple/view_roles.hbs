@@ -1,0 +1,124 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <h1>Electiva de Formacion Complemetaria: Roles de la FET</h1>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Registra</h3>
+            <form action="RolesCrear" method="POST">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Rol</label>
+                    <input type="text" class="form-control" name="nombre" placeholder="Roles">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Codigo de Rol</label>
+                    <input type="text" class="form-control" name="codigo" placeholder="Codigo">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Cantidad</label>
+                    <input type="text" class="form-control" name="nivel" placeholder="Cantidad">
+                </div>
+                <button type="submit" class="btn btn-success">Ingresar</button>
+            </form>
+        </div>
+        <div class="col-8">
+            <h3>Informacion</h3>
+            <table class="table" id="myTable"> 
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each result_roles}}
+                    <tr>
+                    <th scope="row">{{id_rol}}</th>
+                    <td class="nombres">{{nombre}}</td>
+                    <td>{{codigo}}</td>
+                    <td class="niveles">{{nivel}}</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarol{{id_rol}}">
+                            Eliminar
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="eliminarol{{id_rol}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confimacion!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Esta seguro que desea eliminar {{nombre}} ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a class="btn btn-danger" href="RolesEliminar/{{id_rol}}">Eliminar</a>
+                                    </div>                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modificarol{{id_rol}}">
+                            Modificar
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modificarol{{id_rol}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+
+                                <form action="RolesModificar/{{id_rol}}" method="POST">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confimacion!</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                
+                                        <div class="modal-body">
+                                
+                                            <div class="mb-3">
+                                                <input type="text" value="{{nombre}}" class="form-control" name="nombre" placeholder="nombre">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" value="{{codigo}}" class="form-control" name="codigo" placeholder="codigo">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" value="{{nivel}}" class="form-control" name="nivel" placeholder="nivel">
+                                            </div>
+                                
+                                        </div>
+                                
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button class="btn btn-info" type="submit">Modificar</button>
+                                
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br><br>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+</div>
