@@ -4,7 +4,8 @@ import { Button } from 'react-bulma-components';
 import Formulario from './Formulario';
 import ModalReact from './ModalReact';
 import Lineal from './Lineal';
-import GraficaBar from './GraficaBar';
+import GraficaBar from '../../Bulma/components/GraficaBar';
+
 
 export default function Bulma() {
   return (
@@ -12,9 +13,6 @@ export default function Bulma() {
       <Button color="primary">My Bulma button</Button>
       <Formulario></Formulario>
       <ModalReact></ModalReact>
-      <Lineal></Lineal>
-      <GraficaBar></GraficaBar>
-      
     </div>
   )
 }
